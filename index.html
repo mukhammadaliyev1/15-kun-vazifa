@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratory Manipulator Control</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(10, 30px);
+      gap: 2px;
+      margin-bottom: 20px;
+    }
+    .cell {
+      width: 30px;
+      height: 30px;
+      background-color: lightgray;
+      border: 1px solid gray;
+    }
+    .cell.active {
+      background-color: blue;
+    }
+    button {
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: gray;
+      cursor: not-allowed;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Laboratory Manipulator Control</h1>
+  <div>
+    <h2>Control Panel</h2>
+    <div class="grid" id="grid"></div>
+    <input 
+      type="text" 
+      id="commandInput" 
+      placeholder="e.g., LLRRTTBB" 
+      style="margin-right: 10px; padding: 5px; width: 200px;"
+    />
+    <button id="executeButton">Execute Command</button>
+    <div style="margin-top: 20px;">
+      <label for="speedRange" style="display: block; margin-bottom: 5px;">Animation Speed: <span id="speedLabel">50</span></label>
+      <input 
+        type="range" 
+        id="speedRange" 
+        min="1" 
+        max="100" 
+        value="50" 
+        style="width: 100%;"
+      />
+    </div>
+  </div>
+  <div style="margin-top: 20px;">
+    <h2>Command History</h2>
+    <div style="max-height: 300px; overflow-y: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Original</th>
+            <th>Optimized</th>
+            <th>Timestamp</th>
+            <th>Before</th>
+            <th>After</th>
+          </tr>
+        </thead>
+        <tbody id="history"></tbody>
+      </table>
+    </div>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
